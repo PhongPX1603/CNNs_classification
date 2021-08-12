@@ -2,10 +2,12 @@ from importlib import import_module
 import torchvision
 import yaml
 
+
 def load_yaml(yaml_file):
 	with open(yaml_file, mode='r', encoding='utf-8') as f:
-		configs = yaml.save_load(f)
+		configs = yaml.safe_load(f)
 	return configs
+
 
 def create_instance(config, *args, **kwargs):
 	module = config['module']
