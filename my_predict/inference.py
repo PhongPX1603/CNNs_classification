@@ -34,7 +34,7 @@ class Predictor(nn.Module):
 		self.mean = torch.tensor(mean, dtype=torch.float, device=device).view(1, 3, 1, 1) if mean else None
 		self.std = torch.tensor(std, dtype=torch.float, device=device).view(1, 3, 1, 1)	if std else None
 
-		self.model = utils.create_instance(config['model_config'])
+		self.model = utils.create_instance(model_config)
 
 		if weight_path is not None:
 			self.model.load_state_dict(torch.load(f=utils.abs_path(weight_path), map_location='cpu'))
