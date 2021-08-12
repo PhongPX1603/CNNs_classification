@@ -42,9 +42,9 @@ model:
   module: model.model 
   class: MobileNetV2
   MobileNetV2:
-    pretrained: True
+    pretrained: False
     num_classes: 10
-    features_fixed: True
+    features_fixed: False
 
 optimizer:
   module: torch.optim
