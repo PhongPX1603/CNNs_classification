@@ -17,12 +17,12 @@ if __name__ == '__main__':
 	valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_data})
 
 	model = utils.create_instance(config['model'])
-	
+
 	optimizer = utils.create_instance(config['optimizer'], **{'params': model.parameters()})
 
 	criterion = utils.create_instance(config['criterion'])
 
-	lr_schedule = utils.create_instance(config['lr_schedule'], **{'optimizer': optimizer})
+	lr_scheduler = utils.create_instance(config['lr_scheduler'], **{'optimizer': optimizer})
 
 	train_epoch = utils.create_instance(config['train_epoch'])
 	valid_epoch = utils.create_instance(config['valid_epoch'])
