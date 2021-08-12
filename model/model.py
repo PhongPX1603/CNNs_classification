@@ -1,6 +1,6 @@
-from torchvision import models
-from torch import nn
 import torch
+from torch import nn
+from torchvision import models
 
 class ConvBNReLU(nn.Module):
     '''Conv --> BN --> ReLU'''
