@@ -40,11 +40,10 @@ dataloader:
 
 model:
   module: model.model 
-  class: MobileNetV2
-  MobileNetV2:
-    pretrained: False
+  class: CIFAR10
+  CIFAR10:
+    in_channels: 3
     num_classes: 10
-    features_fixed: False
 
 optimizer:
   module: torch.optim

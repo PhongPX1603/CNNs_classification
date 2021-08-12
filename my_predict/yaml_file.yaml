@@ -1,0 +1,28 @@
+cifar10:
+  module: my_predict.inference
+  class: Predictor
+  Predictor:
+    model_config:
+      module: model.model
+      class: CIFAR10
+      CIFAR10:
+        in_channels: 3
+        num_classes: 10
+    weight_path: '''best_model_accuracy=0.7630374203821656.pth'''
+    image_size: '(224, 224)'
+    mean: '(0.485, 0.456, 0.406)'
+    std: '(0.229, 0.224, 0.225)'
+    batch_size: 1
+    device: '''cuda'''
+    classes:
+      0: airplane
+      1: automobile
+      2: bird
+      3: cat
+      4: deer
+      5: dog
+      6: frog
+      7: horse
+      8: ship
+      9: truck
+    
