@@ -63,8 +63,8 @@ criterion:
 
 trainer:
   module: engine.engine
-  class: train_epoch
+  class: TrainEpoch
 
 validation:
   module: engine.engine
-  class: valid_epoch
+  class: EvalEpoch
