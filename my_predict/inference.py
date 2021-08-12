@@ -64,14 +64,14 @@ class Predictor(nn.Module):
 	def postprocess(self, preds: List[torch.Tensor]) -> List[Tuple[str, float]]:
 		outputs = []
 
-        for pred in preds:
-            pred = pred.softmax(dim=1).squeeze(dim=0)
-            scores = pred.data.cpu().numpy().tolist()
-            class_score = max(scores)
-            class_name = self.classes[scores.index(class_score)]
-            outputs.append((class_name, class_score))
+		for pred in preds:
+			pred = pred.softmax(dim=1).squeeze(dim=0)
+			scores = pred.data.cpu().numpy().tolist()
+			class_score = max(scores)
+			class_name = self.classes[scores.index(class_score)]
+			outputs.append((class_name, class_score))
 
-        return outputs
+		return outputs
 
 	def forward(self, images):
 		images = self.preprocess(images)
