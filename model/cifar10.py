@@ -9,7 +9,6 @@ class ConvBNReLU(nn.Module):
                               stride=stride, padding=padding)
         self.bn = nn.BatchNorm2d(num_features=out_channels)
         self.relu = nn.ReLU(self.bn)
-        self.initialize()
     
     def forward(self, x):
         x = self.conv(x)
