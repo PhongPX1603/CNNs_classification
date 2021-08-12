@@ -34,21 +34,10 @@ if __name__ == '__main__':
     lr_scheduler = utils.create_instance(config['lr_scheduler'], **{'optimizer': optimizer})
 
     train_epoch = utils.create_instance(config['trainer'])
-    eval_epoch = utils.create_instance(config['evaluator'])
-
-    train_loss_history = []
-    train_acc_history = []
-
-    train_eval_loss_history = []
-    train_eval_acc_history = []
-
-    valid_loss_history = []
-    valid_acc_history = []
+    eval_epoch = utils.create_instance(config['validation'])
 
     best_valid_acc = 0.
     best_model_state_dict = dict()
-    best_optim_state_dict = dict()
-
 
     for epoch in range(args.num_epochs):
         train_acc, train_loss = train_epoch(train_loader, model, criterion, optimizer, args.device)
@@ -61,14 +50,7 @@ if __name__ == '__main__':
 
         if valid_acc > best_valid_acc:
             best_model_state_dict = copy.deepcopy(model.state_dict())
-            best_optim_state_dict = copy.deepcopy(optimizer.state_dict())
             best_valid_acc = valid_acc
-
-
-        train_loss_history.append(train_loss)
-        valid_loss_history.append(valid_loss)
-        train_acc_history.append(train_acc)
-        valid_acc_history.append(valid_acc)
 
     print(f'Best Validation Accuracy: {best_valid_acc:4f}')
 
