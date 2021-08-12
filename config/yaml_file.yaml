@@ -61,10 +61,10 @@ criterion:
   module: torch.nn
   class: CrossEntropyLoss
 
-train_epoch:
+trainer:
   module: engine.engine
   class: train_epoch
 
-valid_epoch:
+validation:
   module: engine.engine
   class: valid_epoch

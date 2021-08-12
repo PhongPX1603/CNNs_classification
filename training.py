@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
 	lr_scheduler = utils.create_instance(config['lr_scheduler'], **{'optimizer': optimizer})
 
-	train_epoch = utils.create_instance(config['train_epoch'])
-	valid_epoch = utils.create_instance(config['valid_epoch'])
+	train_epoch = utils.create_instance(config['trainer'])
+	valid_epoch = utils.create_instance(config['validation'])
 
 
 	best_acc = 0
