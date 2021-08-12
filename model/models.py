@@ -48,3 +48,20 @@ class CIFAR10(nn.Module):
         x = self.fc3(x)
 
         return x
+
+
+class MobileNetV2(nn.Module):
+    def __init__(self, num_classes, pretrained=False, features_fixed=False):
+        super(MobileNetV2, self).__init__()
+        self.model = models.mobilenet_v2(pretrained=pretrained)
+        # self.model.features.requires_grad_(not features_fixed)
+        self.model.classifier[1] = nn.Linear(in_features=1280, out_features=num_classes)
+
+    def forward(self, x):
+        return self.model(x)
+
+    def state_dict(self):
+        return self.model.state_dict()
+
+    def load_state_dict(self, state_dict):
+        self.model.load_state_dict(state_dict)
