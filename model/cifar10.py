@@ -32,8 +32,6 @@ class CIFAR10(nn.Module):
         self.fc2 = nn.Linear(in_features=128, out_features=50)
         self.bn2 = nn.BatchNorm1d(num_features=50)
         self.fc3 = nn.Linear(in_features=50, out_features=num_classes)
-
-        self.initialize()
  
     def forward(self, x):
         x = self.conv1(x)
