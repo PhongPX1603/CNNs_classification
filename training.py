@@ -20,10 +20,6 @@ if __name__ == '__main__':
     train_dataset = utils.create_instance(config['train_dataset'])
     train_loader = utils.create_instance(config['train_loader'], **{'dataset': train_dataset})
 
-    # train eval dataloader
-    train_eval_dataset = utils.create_instance(config['train_eval_dataset'])
-    train_eval_loader = utils.create_instance(config['train_eval_loader'], **{'dataset': train_eval_dataset})
-
     # valid dataloader
     valid_dataset = utils.create_instance(config['valid_dataset'])
     valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_dataset})
