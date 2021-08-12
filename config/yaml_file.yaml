@@ -17,7 +17,7 @@ train_loader:
     shuffle: True
     batch_size: 64
 
-train_dataset:
+valid_dataset:
   module: torchvision.datasets
   class: CIFAR10
   CIFAR10:
@@ -28,7 +28,7 @@ train_dataset:
       - 'torchvision.transforms.ToTensor()'
       - 'torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])'
 
-train_loader:
+valid_loader:
   module: torch.utils.data
   class: DataLoader
   DataLoader:
