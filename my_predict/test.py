@@ -33,5 +33,5 @@ if __name__ == '__main__':
 
         outputs = predictor(images=images)
         for i, (class_score, class_name) in enumerate(outputs):
-            print(f'Image {i+1}: {class_name} - {class_score * 100:.2f}%')
+            print(f'[..] RESULT #{i + 1}: {class_name} - {class_score * 100:.2f}%')
 
