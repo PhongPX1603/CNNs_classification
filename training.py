@@ -1,7 +1,7 @@
 import argparse
 import utils
 
-if __name__ = '__main__':
+if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--config-path', type=str, default='config/config_yaml.yaml')
 	parser.add_argument('--num-epochs', type=int, default=50)
