@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
         images = [cv2.imread(str(image_path))]
 
-        class_scores, class_names = predictor(images=images)
-        for i, (class_score, class_name) in enumerate(class_scores, class_names):
+        outputs = predictor(images=images)
+        for i, (class_score, class_name) in enumerate(outputs):
             print(f'Image {i+1}: {class_name} - {class_score * 100:.2f}%')
 
