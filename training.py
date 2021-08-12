@@ -17,8 +17,8 @@ if __name__ == '__main__':
 	valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_data})
 
 	model = utils.create_instance(config['model'])
-
-	optimizer = utils.create_instance(config['optimizer'], **{'params:' model.parameters()})
+	
+	optimizer = utils.create_instance(config['optimizer'], **{'params': model.parameters()})
 
 	criterion = utils.create_instance(config['criterion'])
 
