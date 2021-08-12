@@ -5,6 +5,7 @@ if __name__ = '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--config-path', type=str, default='config/config_yaml.yaml')
 	parser.add_argument('--num-epochs', type=int, default=50)
+	parser.add_argument('--device', type=str, default='cuda')
 	args = parser.parse_args()
 
 	config = utils.load_yaml(args.config_path)
@@ -29,8 +30,8 @@ if __name__ = '__main__':
 
 	best_acc = 0
 	for epoch in range(args.num_epochs):
-		acc_train, loss_train = train_epoch(train_loader, model, criterion, optimizer, device='cuda')
-		acc_valid, loss_valid = valid_epoch(valid_loader, model, criterion, device='cuda')
+		acc_train, loss_train = train_epoch(train_loader, model, criterion, optimizer, args.device)
+		acc_valid, loss_valid = valid_epoch(valid_loader, model, criterion, args.device)
 		print(f'epoch {epoch}:\n- train_loss: {loss_train} - train_acc: {acc_train}')
 		print(f'- valid_loss: {loss_valid} - valid_acc: {acc_valid}')
 
