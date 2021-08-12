@@ -3,7 +3,7 @@ import utils
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--config-path', type=str, default='config/config_yaml.yaml')
+	parser.add_argument('--config-path', type=str, default='config/yaml_file.yaml')
 	parser.add_argument('--num-epochs', type=int, default=50)
 	parser.add_argument('--device', type=str, default='cuda')
 	args = parser.parse_args()
@@ -36,6 +36,13 @@ if __name__ == '__main__':
 		print(f'- valid_loss: {loss_valid} - valid_acc: {acc_valid}')
 
 		if acc_valid > best_acc:
+			best_model_state_dict = copy.deepcopy(model.state_dict())
 			best_acc = acc_valid
 
-	print(f'best accuracy: {best_acc}')
+	print(f'Best accuracy: {best_acc}')
+	output_dir = Path('weights')
+    if not output_dir.exists():
+        output_dir.mkdir(parents=True)
+
+    weight_path = output_dir.joinpath(f'best_model_accuracy={best_valid_acc}.pth')
+    torch.save(obj=best_model_state_dict, f=weight_path)
