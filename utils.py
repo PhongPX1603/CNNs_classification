@@ -16,9 +16,9 @@ def create_instance(config, *args, **kwargs):
 	for key, value in config_kwargs.items():
 		if isinstance(value, str):
 			config_kwargs[key] = eval(value)
-		if isinstance(value, list):
+		elif isinstance(value, list):
 			config_kwargs[key] = [eval(v) for v in value]
-		if isinstance(value, tuple):
+		elif isinstance(value, tuple):
 			config_kwargs[key] = tuple([eval(v) for v in value])
 
 	return getattr(import_module(module), name)(*args, **config_kwargs, **kwargs)
