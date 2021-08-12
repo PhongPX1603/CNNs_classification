@@ -13,7 +13,7 @@ def create_instance(config, *args, **kwargs):
 	module = config['module']
 	name = config['class']
 	config_kwargs = config.get(name, {})
-	for key, value in config_kwargs.item():
+	for key, value in config_kwargs.items():
 		if isinstance(value, str):
 			config_kwargs[key] = eval(value)
 		if isinstance(value, list):
