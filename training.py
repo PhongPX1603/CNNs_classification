@@ -41,8 +41,8 @@ if __name__ == '__main__':
 
 	print(f'Best accuracy: {best_acc}')
 	output_dir = Path('weights')
-    if not output_dir.exists():
-        output_dir.mkdir(parents=True)
+	if not output_dir.exists():
+		output_dir.mkdir(parents=True)
 
-    weight_path = output_dir.joinpath(f'best_model_accuracy={best_valid_acc}.pth')
-    torch.save(obj=best_model_state_dict, f=weight_path)
+	weight_path = output_dir.joinpath(f'best_model_accuracy={best_valid_acc}.pth')
+	torch.save(obj=best_model_state_dict, f=weight_path)
