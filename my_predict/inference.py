@@ -62,7 +62,7 @@ class Predictor(nn.Module):
 		return preds
 
 	def postprocess(self, preds: List[torch.Tensor]) -> List[Tuple[str, float]]:
-		scores = nn.Softmax(dim=1)(pred)
+		scores = nn.Softmax(dim=1)(preds)
 		class_scores, class_indices = scores.max(dim=1)
 		class_scores = class_scores.cpu().numpy().tolist()
 		class_indices = class_indices.cpu().numpy().tolist()
