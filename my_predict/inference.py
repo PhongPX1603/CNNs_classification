@@ -37,7 +37,7 @@ class Predictor(nn.Module):
 		self.model = utils.create_instance(model_config)
 
 		if weight_path is not None:
-			self.model.load_state_dict(torch.load(f=utils.abs_path(weight_path), map_location='cpu'))
+			self.model.load_state_dict(torch.load(f=weight_path, map_location='cpu'))
 		self.model.to(self.device).eval()
 
 	def preprocess(self, images: List[np.ndarray]) -> List[np.ndarray]:
