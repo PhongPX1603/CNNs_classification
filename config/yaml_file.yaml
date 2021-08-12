@@ -34,6 +34,10 @@ valid_loader:
     shuffle: False
     batch_size: 64
 
+dataloader:
+  module: dataset.cifar10
+  class: Cifar10
+
 model:
   module: model.cifar10 
   class: CIFAR10
