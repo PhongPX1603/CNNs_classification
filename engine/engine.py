@@ -36,7 +36,7 @@ def valid_epoch(data_loader, model, criterion, device='cuda'):
 	model.to(device)
 	model.eval()
 
-	accuracies, losses = []. []
+	accuracies, losses = [], []
 
 	for samples, targets in data_loader:
 		samples = samples.to(device)
