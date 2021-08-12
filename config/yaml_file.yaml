@@ -5,9 +5,7 @@ train_dataset:
     root: '''dataset'''
     train: True
     download: True
-    transform:
-      - 'torchvision.transforms.ToTensor()'
-      
+
 train_loader:
   module: torch.utils.data
   class: DataLoader
@@ -22,8 +20,6 @@ valid_dataset:
     root: '''dataset'''
     train: False
     download: True
-    transform:
-      - 'torchvision.transforms.ToTensor()'
 
 valid_loader:
   module: torch.utils.data
