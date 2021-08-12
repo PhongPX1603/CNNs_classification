@@ -39,7 +39,7 @@ dataloader:
   class: Cifar10
 
 model:
-  module: model.cifar10 
+  module: model.model 
   class: MobileNetV2
   MobileNetV2:
     pretrained: True
