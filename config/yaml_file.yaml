@@ -1,13 +1,18 @@
 train_dataset:
-  module: torchvision.datasets
-  class: CIFAR10
-  CIFAR10:
-    root: '''dataset'''
-    train: True
-    download: True
-    transform:
-      - 'torchvision.transforms.ToTensor()'
-      - 'torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])'
+  module: dataset.dogcat_dataset
+  class: DogCatDataset
+  DogCatDataset:
+    image_dir: '''dataset/DogsandCats_image'''
+    image_pattern: '''**/*.*'''
+    classes:
+      cat: 0
+      dog: 1
+    image_size: '(224, 224)'
+    mean: ['0.485', '0.456', '0.406']
+    std: ['0.229', '0.224', '0.225']
+    # transforms:
+    #   - 'torchvision.transforms.RandomVerticalFlip(p=0.5)'
+    #   - 'torchvision.transforms.RandomGrayscale(p=0.5)'
 
 train_loader:
   module: torch.utils.data
@@ -17,15 +22,17 @@ train_loader:
     batch_size: 64
 
 valid_dataset:
-  module: torchvision.datasets
-  class: CIFAR10
-  CIFAR10:
-    root: '''dataset'''
-    train: False
-    download: True
-    transform:
-        - 'torchvision.transforms.ToTensor()'
-        - 'torchvision.transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])'
+  module: dataset.dogcat_dataset
+  class: DogCatDataset
+  DogCatDataset:
+    image_dir: '''dataset/DogsandCats_image'''
+    image_pattern: '''**/*.*'''
+    classes:
+      cat: 0
+      dog: 1
+    image_size: '(224, 224)'
+    mean: ['0.485', '0.456', '0.406']
+    std: ['0.229', '0.224', '0.225']
 
 valid_loader:
   module: torch.utils.data
