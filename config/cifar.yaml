@@ -2,7 +2,7 @@ train_dataset:
   module: torchvision.datasets
   class: CIFAR10
   CIFAR10:
-    root: '''dataset/cifar-10-batches-py'''
+    root: '''load_dataset''
     train: True
     download: True
     transform: 
@@ -21,7 +21,7 @@ valid_dataset:
   module: torchvision.datasets
   class: CIFAR10
   CIFAR10:
-    root: '''dataset/cifar-10-batches-py'''
+    root: '''load_dataset'''
     train: False
     download: True
     transform:
