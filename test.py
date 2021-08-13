@@ -2,9 +2,9 @@ import utils
 import argparse
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--device', type=str, default='cuda')
-    args = parser.parse_args()
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--device', type=str, default='cuda')
+	args = parser.parse_args()
 
 	config = utils.load_yaml('config/cifar.yaml')
 
