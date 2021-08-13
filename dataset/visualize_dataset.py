@@ -3,11 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--device', type=str, default='cuda')
-args = parser.parse_args()
-
-def visualize(train_loader, args.device):
+def visualize(train_loader, device):
 	train_iter = iter(train_loader)
 	samples, labels = train_iter.next()
 

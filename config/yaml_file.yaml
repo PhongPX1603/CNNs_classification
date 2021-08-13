@@ -13,6 +13,9 @@ train_dataset:
     # transforms:
     #   - 'torchvision.transforms.RandomVerticalFlip(p=0.5)'
     #   - 'torchvision.transforms.RandomGrayscale(p=0.5)'
+train_sampler:
+  module: torch.utils.data.sampler
+  class: SubsetRandomSampler
 
 train_loader:
   module: torch.utils.data

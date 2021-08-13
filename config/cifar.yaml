@@ -35,3 +35,7 @@ valid_loader:
   DataLoader:
     shuffle: False
     batch_size: 64
+
+visualize:
+  module: dataset.visualize_dataset
+  class: visualize
