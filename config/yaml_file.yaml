@@ -76,6 +76,16 @@ criterion:
   module: torch.nn
   class: CrossEntropyLoss
 
+early_stopping:
+  module: early_stopping.early_stopping
+  class: EarlyStopping
+  EarlyStopping:
+    mode: '''min'''
+    patience: 10
+    verbose: False
+    delta: 0
+    path: '''weights/cifar10.pth'''
+
 trainer:
   module: engine.engine
   class: TrainEpoch
