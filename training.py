@@ -9,7 +9,7 @@ from pathlib import Path
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config-path', type=str, default='config/hymenoptera_training.yaml')
+    parser.add_argument('--config-path', type=str, default='config/yaml_file.yaml')
     parser.add_argument('--num-epochs', type=int, default=50)
     parser.add_argument('--device', type=str, default='cuda')
     args = parser.parse_args()
@@ -41,6 +41,8 @@ if __name__ == '__main__':
     best_valid_acc = 0.
     best_model_state_dict = dict()
 
+    early_stopping = utils.create_instance(config['early_stopping'])
+
     for epoch in range(args.num_epochs):
         train_acc, train_loss = train_epoch(train_loader, model, criterion, optimizer, args.device)
         valid_acc, valid_loss = eval_epoch(valid_loader, model, criterion, args.device)
@@ -53,6 +55,11 @@ if __name__ == '__main__':
         if valid_acc > best_valid_acc:
             best_model_state_dict = copy.deepcopy(model.state_dict())
             best_valid_acc = valid_acc
+
+        early_stopping(valid_loss, model)
+        if early_stopping.early_stop:
+            print("Early stopping")
+            break
 
     print(f'Best Validation Accuracy: {best_valid_acc:4f}')
 
