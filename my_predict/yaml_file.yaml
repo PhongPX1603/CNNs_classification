@@ -9,7 +9,7 @@ cifar10:
         pretrained: True
         num_classes: 10
         features_fixed: True
-    weight_path: '''weights/best_model_accuracy=0.9552149681528662.pth'''
+    weight_path: '''weights/cifar10.pth'''
     image_size: '(224, 224)'
     mean: '(0.485, 0.456, 0.406)'
     std: '(0.229, 0.224, 0.225)'
