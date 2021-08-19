@@ -1,6 +1,6 @@
 train_dataset:
   module: dataset.cifar10
-  class: train_dataset
+  class: train_data
 
 
 train_loader:
@@ -12,7 +12,7 @@ train_loader:
 
 valid_dataset:
   module: dataset.cifar10
-  class: valid_dataset
+  class: valid_data
 
 valid_loader:
   module: torch.utils.data
