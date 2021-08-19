@@ -36,6 +36,47 @@ valid_loader:
     shuffle: False
     batch_size: 64
 
-visualize:
-  module: dataset.visualize_dataset
-  class: visualize
+model:
+  module: model.se_resnet 
+  class: Resnet
+  Resnet:
+    layers: ['3', '4', '6', '3']
+    image_channels: 3
+    num_classes: 2
+
+optimizer:
+  module: torch.optim
+  class: SGD
+  SGD:
+    lr: 0.01
+    momentum: 0.9
+
+lr_scheduler:
+  module: torch.optim.lr_scheduler
+  class: ReduceLROnPlateau
+  ReduceLROnPlateau:
+    factor: 0.1
+    patience: 5
+    verbose: True
+
+criterion:
+  module: torch.nn
+  class: CrossEntropyLoss
+
+early_stopping:
+  module: early_stopping.early_stopping
+  class: EarlyStopping
+  EarlyStopping:
+    mode: '''min'''
+    patience: 10
+    verbose: False
+    delta: 0
+    path: '''weights/cifar10.pth'''
+
+trainer:
+  module: engine.engine
+  class: TrainEpoch
+
+validation:
+  module: engine.engine
+  class: EvalEpoch    
