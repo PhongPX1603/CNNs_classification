@@ -18,12 +18,12 @@ if __name__ == '__main__':
     config = utils.load_yaml(args.config_path)
 
     # train dataloader
-    train_dataset = utils.create_instance(config['train_dataset_cifar'])
-    train_loader = utils.create_instance(config['train_loader_cifar'], **{'dataset': train_dataset})
+    train_dataset = utils.create_instance(config['train_dataset'])
+    train_loader = utils.create_instance(config['train_loader'], **{'dataset': train_dataset})
 
     # valid dataloader
-    valid_dataset = utils.create_instance(config['valid_dataset_cifar'])
-    valid_loader = utils.create_instance(config['valid_loader_cifar'], **{'dataset': valid_dataset})
+    valid_dataset = utils.create_instance(config['valid_dataset'])
+    valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_dataset})
 
     # model
     model = utils.create_instance(config['model'])
