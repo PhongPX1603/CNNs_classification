@@ -9,10 +9,9 @@ from pathlib import Path
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config-path', type=str, default='config/yaml_file.yaml')
+    parser.add_argument('--config-path', type=str, default='config/hymenoptera_training.yaml')
     parser.add_argument('--num-epochs', type=int, default=50)
     parser.add_argument('--device', type=str, default='cuda')
-    parser.add_argument('--weight-path', type=str, default='weights/cifar10.pth')
     args = parser.parse_args()
 
     config = utils.load_yaml(args.config_path)
@@ -31,19 +30,20 @@ if __name__ == '__main__':
     # loss function
     criterion = utils.create_instance(config['criterion'])
 
+    #early stopping
+    early_stopping = utils.create_instance(config['early_stopping'])
+
     optimizer = utils.create_instance(config['optimizer'], **{'params': model.parameters()})
     lr_scheduler = utils.create_instance(config['lr_scheduler'], **{'optimizer': optimizer})
 
     train_epoch = utils.create_instance(config['trainer'])
-    eval_epoch = utils.create_instance(config['validation'])
+    eval_epoch = utils.create_instance(config['evaluator'])
+
 
     best_valid_acc = 0.
     best_model_state_dict = dict()
+    best_optim_state_dict = dict()
 
-    early_stopping = utils.create_instance(config['early_stopping'])
-
-    if Path(args.weight_path).exists():
-        model.load_state_dict(torch.load(args.weight_path))
 
     for epoch in range(args.num_epochs):
         train_acc, train_loss = train_epoch(train_loader, model, criterion, optimizer, args.device)
@@ -56,6 +56,7 @@ if __name__ == '__main__':
 
         if valid_acc > best_valid_acc:
             best_model_state_dict = copy.deepcopy(model.state_dict())
+            best_optim_state_dict = copy.deepcopy(optimizer.state_dict())
             best_valid_acc = valid_acc
 
         early_stopping(valid_loss, model)

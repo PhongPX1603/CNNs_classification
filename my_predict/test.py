@@ -22,8 +22,8 @@ if __name__ == '__main__':
     image_paths = list(Path(args.image_path).glob(args.pattern)) if args.pattern else [Path(args.image_path)]
     image_paths = natsorted(image_paths, key=lambda x: x.stem) 
 
-    config = utils.load_yaml('my_predict/yaml_file.yaml')
-    predictor = utils.create_instance(config['cifar10'])
+    config = utils.load_yaml('my_predict/hymenoptera.yaml')
+    predictor = utils.create_instance(config['hymenoptera'])
 
     for idx, image_path in enumerate(image_paths[int(args.start_index) - 1:], int(args.start_index)):
         print('-' * 50)
