@@ -45,7 +45,7 @@ model:
   module: model.se_resnet 
   class: Resnet
   Resnet:
-    layers: [3, 4, 6, 3]
+    layers: ['3', '4', '6', '3']
     image_channels: 3
     num_classes: 2
 
