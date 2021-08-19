@@ -85,13 +85,16 @@ valid_loader_cifar:
     batch_size: 64
 
 model:
-  module: model.model 
-  class: MobileNetV2
-  MobileNetV2:
-    pretrained: True
-    num_classes: 10
-    features_fixed: True
+  module: model.se_resnet 
+  class: Resnet
+  Resnet:
+    layers: [3, 4, 6, 3]
+    image_channels: 3
+    num_classes: 2
 
+block:
+  module: model.se_resnet
+  class: block    
 
 optimizer:
   module: torch.optim
