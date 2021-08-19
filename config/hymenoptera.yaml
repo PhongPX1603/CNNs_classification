@@ -2,7 +2,7 @@ train_dataset:
   module: dataset.dataset
   class: Dataset
   Dataset:
-    image_dir: '''dataset/hymenoptera_data/train'''
+    dirname: '''dataset/hymenoptera_data/train/'''
     pattern: '''**/*.*'''
     classes:
       ant: 0
@@ -26,7 +26,7 @@ valid_dataset:
   module: dataset.dataset
   class: Dataset
   Dataset:
-    image_dir: '''dataset/hymenoptera_data/train'''
+    dirname: '''dataset/hymenoptera_data/val/'''
     pattern: '''**/*.*'''
     classes:
       ant: 0
