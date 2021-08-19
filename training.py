@@ -40,6 +40,7 @@ if __name__ == '__main__':
 
     best_valid_acc = 0.
     best_model_state_dict = dict()
+    best_optimizer_state_dict = dict()
 
     early_stopping = utils.create_instance(config['early_stopping'])
 
@@ -57,6 +58,7 @@ if __name__ == '__main__':
 
         if valid_acc > best_valid_acc:
             best_model_state_dict = copy.deepcopy(model.state_dict())
+            best_optimizer_state_dict = copy.deepcopy(optimizer.state_dict())
             best_valid_acc = valid_acc
 
         early_stopping(valid_loss, model)
@@ -66,9 +68,6 @@ if __name__ == '__main__':
 
     print(f'Best Validation Accuracy: {best_valid_acc:4f}')
 
-    output_dir = Path('weights')
-    if not output_dir.exists():
-        output_dir.mkdir(parents=True)
+    checkpoint = {'state_dict': best_model_state_dict, 'optimizer': best_optimizer_state_dict}
 
-    weight_path = output_dir.joinpath(args.weight_path)
-    torch.save(obj=best_model_state_dict, f=weight_path)
+    torch.save(obj=checkpoint, f=args.weight_path)
