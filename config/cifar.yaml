@@ -77,6 +77,6 @@ trainer:
   module: engine.engine
   class: TrainEpoch
 
-validation:
+evaluator:
   module: engine.engine
   class: EvalEpoch    
