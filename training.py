@@ -17,14 +17,14 @@ if __name__ == '__main__':
 
     config = utils.load_yaml(args.config_path)
 
-    # # train dataloader
-    # train_dataset = utils.create_instance(config['train_dataset'])
-    # train_loader = utils.create_instance(config['train_loader'], **{'dataset': train_dataset})
+    # train dataloader
+    train_dataset = utils.create_instance(config['train_dataset'])
+    train_loader = utils.create_instance(config['train_loader'], **{'dataset': train_dataset})
 
-    # # valid dataloader
-    # valid_dataset = utils.create_instance(config['valid_dataset'])
-    # valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_dataset})
-    train_loader, valid_loader = utils.create_instance(config['data_loader'])
+    # valid dataloader
+    valid_dataset = utils.create_instance(config['valid_dataset'])
+    valid_loader = utils.create_instance(config['valid_loader'], **{'dataset': valid_dataset})
+    # train_loader, valid_loader = utils.create_instance(config['data_loader'])
 
     # model
     model = utils.create_instance(config['model'])
