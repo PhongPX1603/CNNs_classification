@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     early_stopping = utils.create_instance(config['early_stopping'])
 
-    if Path(args.weight_path.exists()):
+    if Path(args.weight_path).exists():
         model.load_state_dict(torch.load(args.weight_path))
 
     for epoch in range(args.num_epochs):
