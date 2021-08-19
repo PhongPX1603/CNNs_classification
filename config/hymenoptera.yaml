@@ -2,18 +2,17 @@ train_dataset:
   module: dataset.dataset
   class: Dataset
   Dataset:
-    dirname: '''dataset/hymenoptera_data/train/'''
-    pattern: '''**/*.*'''
-    classes:
-      ant: 0
-      bee: 1
+    dirname: '''dataset/hymenoptera_data/train'''
+    pattern: '''**/*.jpg'''
     image_size: '(224, 224)'
+    classes:
+      ants: 0
+      bees: 1
     mean: ['0.485', '0.456', '0.406']
     std: ['0.229', '0.224', '0.225']
     transforms:
       - 'torchvision.transforms.RandomVerticalFlip(p=0.5)'
       - 'torchvision.transforms.RandomGrayscale(p=0.5)'
-      - 'torchvision.transforms.Resize(size=224)'
 
 train_loader:
   module: torch.utils.data
@@ -26,12 +25,12 @@ valid_dataset:
   module: dataset.dataset
   class: Dataset
   Dataset:
-    dirname: '''dataset/hymenoptera_data/val/'''
-    pattern: '''**/*.*'''
-    classes:
-      ant: 0
-      bee: 1
+    dirname: '''dataset/hymenoptera_data/train'''
+    pattern: '''**/*.jpg'''
     image_size: '(224, 224)'
+    classes:
+      ants: 0
+      bees: 1
     mean: ['0.485', '0.456', '0.406']
     std: ['0.229', '0.224', '0.225']
 
