@@ -12,6 +12,7 @@ if __name__ == '__main__':
     parser.add_argument('--config-path', type=str, default='config/hymenoptera_training.yaml')
     parser.add_argument('--num-epochs', type=int, default=50)
     parser.add_argument('--device', type=str, default='cuda')
+    parser.add_argument('--weight-path', type=str, default='best_weight')
     args = parser.parse_args()
 
     config = utils.load_yaml(args.config_path)
@@ -70,5 +71,5 @@ if __name__ == '__main__':
     if not output_dir.exists():
         output_dir.mkdir(parents=True)
 
-    weight_path = output_dir.joinpath(f'best_model_accuracy={best_valid_acc}.pth')
+    weight_path = output_dir.joinpath(args.weight_path)
     torch.save(obj=best_model_state_dict, f=weight_path)
