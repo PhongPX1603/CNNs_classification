@@ -36,6 +36,10 @@ valid_loader:
     shuffle: False
     batch_size: 64
 
+data_loader:
+  module: dataset.cifar10
+  class: Cifar10
+
 model:
   module: model.se_resnet 
   class: Resnet
