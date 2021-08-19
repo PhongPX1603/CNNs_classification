@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     config = utils.load_yaml(args.config_path)
 
-    train dataloader
+    # train dataloader
     train_dataset = utils.create_instance(config['train_dataset'])
     train_loader = utils.create_instance(config['train_loader'], **{'dataset': train_dataset})
 
