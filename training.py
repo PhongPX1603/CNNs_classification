@@ -26,8 +26,7 @@ if __name__ == '__main__':
     valid_loader = utils.create_instance(config['valid_loader_cifar'], **{'dataset': valid_dataset})
 
     # model
-    block = utils.create_instance(config['block'])
-    model = utils.create_instance(config['model'], **{'block': block})
+    model = utils.create_instance(config['model'])
 
     # loss function
     criterion = utils.create_instance(config['criterion'])

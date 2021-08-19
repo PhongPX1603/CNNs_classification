@@ -61,7 +61,7 @@ class block(nn.Module):
 		return x
 		
 class Resnet(nn.Module):
-	def __init__(self, block, layers, image_channels, num_classes):
+	def __init__(self, layers, image_channels, num_classes):
 		super(Resnet, self).__init__()
 		self.in_channels = 64
 		self.conv1 = nn.Conv2d(image_channels, out_channels=64, kernel_size=7, stride=2, padding=3)
@@ -70,10 +70,10 @@ class Resnet(nn.Module):
 		self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
 		#Resnet
-		self.layer1 = self.make_layer(block, num_residual_block=layers[0], out_channels=64, stride=1)
-		self.layer2 = self.make_layer(block, num_residual_block=layers[1], out_channels=128, stride=2)
-		self.layer3 = self.make_layer(block, num_residual_block=layers[2], out_channels=256, stride=2)
-		self.layer4 = self.make_layer(block, num_residual_block=layers[3], out_channels=512, stride=2)
+		self.layer1 = self.make_layer(num_residual_block=layers[0], out_channels=64, stride=1)
+		self.layer2 = self.make_layer(num_residual_block=layers[1], out_channels=128, stride=2)
+		self.layer3 = self.make_layer(num_residual_block=layers[2], out_channels=256, stride=2)
+		self.layer4 = self.make_layer(num_residual_block=layers[3], out_channels=512, stride=2)
 
 		self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 		self.fc = nn.Linear(512, num_classes)
@@ -95,7 +95,7 @@ class Resnet(nn.Module):
 
 		return x
 
-	def make_layer(self, block, num_residual_block, out_channels, stride):
+	def make_layer(self, num_residual_block, out_channels, stride):
 		identity_downsample = None
 		layers = []
 
