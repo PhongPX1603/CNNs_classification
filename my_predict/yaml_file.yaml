@@ -4,8 +4,8 @@ cifar10:
   Predictor:
     model_config:
       module: model.se_mobile
-      class: MobileNetV2
-      MobileNetV2:
+      class: MobileNetV1
+      MobileNetV1:
         in_channels: 3
         num_classes: 10
     weight_path: '''weights/cifar_se_mobile.pth'''
