@@ -41,10 +41,9 @@ data_loader:
   class: Cifar10
 
 model:
-  module: model.se_resnet 
-  class: Resnet
+  module: model.se_mobile 
+  class: MobileNetV1
   Resnet:
-    layers: ['3', '4', '6', '3']
     image_channels: 3
     num_classes: 10
 
