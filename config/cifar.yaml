@@ -41,7 +41,7 @@ data_loader:
   class: Cifar10
 
 model:
-  module: model.se_mobile 
+  module: model.mobile_net 
   class: MobileNetV1
   Resnet:
     image_channels: 3
