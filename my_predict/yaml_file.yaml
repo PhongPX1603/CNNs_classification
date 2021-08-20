@@ -3,13 +3,12 @@ cifar10:
   class: Predictor
   Predictor:
     model_config:
-      module: model.model
+      module: model.se_mobile
       class: MobileNetV2
       MobileNetV2:
-        pretrained: True
+        in_channels: 3
         num_classes: 10
-        features_fixed: True
-    weight_path: '''weights/cifar10.pth'''
+    weight_path: '''weights/cifar_se_mobile.pth'''
     image_size: '(224, 224)'
     mean: '(0.485, 0.456, 0.406)'
     std: '(0.229, 0.224, 0.225)'
