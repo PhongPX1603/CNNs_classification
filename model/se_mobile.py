@@ -47,12 +47,13 @@ class DeepwiseConv(nn.Module):
                                                ),
                                      nn.BatchNorm2d(num_features=out_channels),
                                      nn.ReLU6(inplace=True))
-        self.se_block = SEblock(num_channels=out_channels, ratio_reduce=4)
+        self.se_block = SEblock(num_channels=in_channels, ratio_reduce=4)
 
     def forward(self, x):
         x = self.dw_conv(x)
+        x = self.se_block(x)  
         x = self.pw_conv(x)        
-        x = self.se_block(x)               
+                     
         return x        
         
 class MobileNetV1(nn.Module):
