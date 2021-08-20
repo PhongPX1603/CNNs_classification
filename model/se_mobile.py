@@ -51,8 +51,8 @@ class DeepwiseConv(nn.Module):
 
     def forward(self, x):
         x = self.dw_conv(x)
-        x = self.se_block(x)
-        x = self.pw_conv(x)               
+        x = self.pw_conv(x)        
+        x = self.se_block(x)               
         return x        
         
 class MobileNetV1(nn.Module):
