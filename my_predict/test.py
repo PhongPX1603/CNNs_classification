@@ -13,7 +13,7 @@ import utils  # noqa: E402
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('image_path', help='image dir.')
-    parser.add_argument('--output-dir', help='path to save image')
+    parser.add_argument('--output-dir', type=str, help='path to save image')
     parser.add_argument('--pattern', help='glob pattern if image_path is a dir.')
     parser.add_argument('--show-image', action='store_true')
     parser.add_argument('--start-index', default=1)
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     image_paths = natsorted(image_paths, key=lambda x: x.stem) 
 
     config = utils.load_yaml(args.outputs_dir)
-    predictor = utils.create_instance(config['hymenoptera'])
+    predictor = utils.create_instance(config['cifar10'])
 
     for idx, image_path in enumerate(image_paths[int(args.start_index) - 1:], int(args.start_index)):
         print('-' * 50)
