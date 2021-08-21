@@ -86,7 +86,7 @@ class MobileNetV1(nn.Module):
         self.block7 = DeepwiseConv(in_channels=512, out_channels=1024, stride=2)
         self.block8 = DeepwiseConv(in_channels=1024, out_channels=1024, stride=1)
  
-        self.avg = nn.AvgPool2d(kernel_size=7)
+        self.avg = nn.AdaptiveAvgPool2d(output_size=1)
         self.fc = nn.Linear(in_features=1024, out_features=num_classes)
 
     def forward(self, x):
