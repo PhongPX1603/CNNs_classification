@@ -16,17 +16,12 @@ class SiLU(nn.Module):
         return x * torch.sigmoid(x)
 
 
-class ConvSiLU(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, stride, padding, groups=1):
-        super(ConvSiLU, self).__init__()
-        self.conv_silu = nn.Sequential(
-            nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
+def ConvSiLU(in_channels, out_channels, kernel_size, stride, padding, groups=1):
+    return nn.Sequential(
+           nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                       kernel_size=kernel_size, stride=stride, padding=padding, groups=groups, bias=False),
-            nn.BatchNorm2d(num_features=out_channels),
-            SiLU())
-
-    def forward(self, x):
-        return self.conv_silu(x)
+           nn.BatchNorm2d(num_features=out_channels),
+           SiLU())
 
 
 class InvertedResidual(nn.Module):
