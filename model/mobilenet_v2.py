@@ -74,14 +74,14 @@ class MobileNetV2(nn.Module):
         layers = [ConvSiLU(in_channels=3, out_channels=input_channel, kernel_size=3, stride=2, padding=1)]
 
         # building inverted residual blocks
-        block = InvertedResidualBlock
+        block = InvertedResidual
         for t, c, n, s in self.cfgs:
             output_channel = c
             for i in range(n):
                 layers.append(block(input_channel, output_channel, s if i == 0 else 1, t))
                 input_channel = output_channel
         self.features = nn.Sequential(*layers)
-        
+
         # building last several layers
         output_channel = 1280
         self.conv = conv_1x1_bn(input_channel, output_channel)
@@ -110,4 +110,4 @@ class MobileNetV2(nn.Module):
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
                 m.weight.data.normal_(0, 0.01)
-                m.bias.data.zero_()     
+                m.bias.data.zero_()   
