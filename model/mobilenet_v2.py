@@ -84,7 +84,7 @@ class MobileNetV2(nn.Module):
 
         # building last several layers
         output_channel = 1280
-        self.conv = conv_1x1_bn(input_channel, output_channel)
+        self.conv = ConvSiLU(in_channels=input_channel, out_channels=output_channel, kernel_size=1, stride=1, padding=0)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.classifier = nn.Linear(output_channel, num_classes)
 
