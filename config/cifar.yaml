@@ -41,10 +41,9 @@ data_loader:
   class: Cifar10
 
 model:
-  module: model.se_mobile_silu 
-  class: MobileNetV1
-  Resnet:
-    image_channels: 3
+  module: model.mobilenet_v2 
+  class: MobileNetV2
+  MobileNetV2:
     num_classes: 10
 
 optimizer:

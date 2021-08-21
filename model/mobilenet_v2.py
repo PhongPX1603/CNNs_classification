@@ -21,7 +21,7 @@ class ConvSiLU(nn.Module):
             nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                       kernel_size=kernel_size, stride=stride, padding=padding, groups=groups, bias=False),
             nn.BatchNorm2d(num_features=out_channels),
-            SiLU(),)
+            SiLU())
 
     def forward(self, x):
         return self.conv_silu(x)
