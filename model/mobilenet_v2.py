@@ -29,9 +29,9 @@ class ConvSiLU(nn.Module):
         return self.conv_silu(x)
 
 
-class InvertedResidualBlock(nn.Module):
+class InvertedResidual(nn.Module):
     def __init__(self, in_channels, out_channels, stride, expand_ratio, reduction=4):  # r in squeeze-and-excitation optimization
-        super(InvertedResidualBlock, self).__init__()
+        super(InvertedResidual, self).__init__()
         self.use_residual = (in_channels == out_channels) and (stride == 1)
         hidden_dim = in_channels * expand_ratio
         self.expand = in_channels != hidden_dim
