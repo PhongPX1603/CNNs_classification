@@ -53,6 +53,7 @@ optimizer:
   SGD:
     lr: 0.1
     momentum: 0.92
+    weight_decay: 0.00001
 
 lr_scheduler:
   module: torch.optim.lr_scheduler
@@ -74,7 +75,7 @@ early_stopping:
     patience: 10
     verbose: False
     delta: 0
-    path: '''weights/se_resnet.pth'''
+    path: '''weights/mobile_net_v2.pth'''
 
 trainer:
   module: engine.engine
