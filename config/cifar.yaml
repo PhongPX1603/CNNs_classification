@@ -41,9 +41,10 @@ data_loader:
   class: Cifar10
 
 model:
-  module: model.mobilenet_v2 
+  module: model.model 
   class: MobileNetV2
   MobileNetV2:
+    pretrained: False
     num_classes: 10
 
 optimizer:
