@@ -51,8 +51,8 @@ optimizer:
   module: torch.optim
   class: SGD
   SGD:
-    lr: 0.01
-    momentum: 0.9
+    lr: 0.1
+    momentum: 0.92
 
 lr_scheduler:
   module: torch.optim.lr_scheduler
