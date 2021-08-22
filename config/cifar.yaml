@@ -51,7 +51,7 @@ optimizer:
   module: torch.optim
   class: SGD
   SGD:
-    lr: 0.1
+    lr: 0.05
     momentum: 0.92
     weight_decay: 0.00001
 
