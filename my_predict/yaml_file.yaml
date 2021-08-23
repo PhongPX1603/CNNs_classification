@@ -3,15 +3,14 @@ cifar10:
   class: Predictor
   Predictor:
     model_config:
-      module: model.se_mobile
-      class: MobileNetV1
-      MobileNetV1:
-        in_channels: 3
+      module: model.mobilenet_v2 
+      class: MobileNetV2
+      MobileNetV2:
         num_classes: 10
-    weight_path: '''weights/cifar_se_mobile.pth'''
+    weight_path: '''weights/mobile_net_v2.pth'''
     image_size: '(224, 224)'
-    mean: '(0.485, 0.456, 0.406)'
-    std: '(0.229, 0.224, 0.225)'
+    mean: '(0.4914, 0.4822, 0.4465)'
+    std: '(0.247, 0.243, 0.261)'
     batch_size: 1
     device: '''cuda'''
     classes:
