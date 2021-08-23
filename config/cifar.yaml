@@ -41,16 +41,17 @@ data_loader:
   class: Cifar10
 
 model:
-  module: model.mobilenet_v2 
-  class: MobileNetV2
-  MobileNetV2:
+  module: model.efficientnet 
+  class: EfficientNet
+  EfficientNet:
+    version: '''b0'''
     num_classes: 10
 
 optimizer:
   module: torch.optim
   class: SGD
   SGD:
-    lr: 0.05
+    lr: 0.1
     momentum: 0.92
     weight_decay: 0.00001
 

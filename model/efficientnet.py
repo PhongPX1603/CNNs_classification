@@ -23,7 +23,7 @@ class ConvSiLU(nn.Module):
             nn.Conv2d(in_channels=in_channels, out_channels=out_channels,
                       kernel_size=kernel_size, stride=stride, padding=padding, groups=groups, bias=False),
             nn.BatchNorm2d(num_features=out_channels),
-            SiLU(),)
+            nn.SiLU())
 
     def forward(self, x):
         return self.conv_silu(x)
@@ -35,7 +35,7 @@ class SqueezeExcitation(nn.Module):
         self.SEnet = nn.Sequential(
             nn.AdaptiveAvgPool2d(output_size=1),  # C x H x W -> C x 1 x 1
             nn.Conv2d(in_channels=in_channels, out_channels=reduced_dim, kernel_size=1),  # C x 1 x 1 -> C/r x 1 x 1
-            SiLU(),  # in original using ReLU
+            nn.SiLU(),  # in original using ReLU
             nn.Conv2d(in_channels=reduced_dim, out_channels=in_channels, kernel_size=1),  # C/r x 1 x 1 -> C x 1 x 1
             nn.Sigmoid())
 
