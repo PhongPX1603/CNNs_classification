@@ -11,23 +11,23 @@
     my_CNNs_classification
                     |
                     ├── config
-                    |	    ├── cifar.yaml       
-                    |	    └── hymenoptera.yaml
+                    |	  ├── cifar.yaml       
+                    |	  └── hymenoptera.yaml
                     |
                     ├── models
-                    |	    ├── efficientnet.py  # definition of EfficientNet model
-                    |	    ├── mobile_net.py    # definition of MobileNet v1 model
+                    |	  ├── efficientnet.py  # definition of EfficientNet model
+                    |	  ├── mobile_net.py    # definition of MobileNet v1 model
                     |     ├── mobilenet_v2.py  # definition of MobileNet V2 model
                     |     └── se_resnet.py     # definition of ResNet model with Squeeze and Excitation class                    
                     |
                     ├── my_predict
-                    |	    ├── inference.py
+                    |	  ├── inference.py
                     |     ├── test.py
                     |     ├── yaml_file.yaml
                     |     └── hymenoptera.yaml
                     |
                     ├── dataset
-                    |	    ├── cifar.py
+                    |	  ├── cifar.py
                     |     ├── dataset.py
                     |     └── dogcat_dataset.py     
                     |
