@@ -7,7 +7,7 @@ cifar10:
       class: MobileNetV2
       MobileNetV2:
         num_classes: 10
-    weight_path: '''weights/mobile_net_v2.pth'''
+    weight_path: '''weights/best_model_accuracy=0.9552149681528662.pth'''
     image_size: '(224, 224)'
     mean: '(0.4914, 0.4822, 0.4465)'
     std: '(0.247, 0.243, 0.261)'

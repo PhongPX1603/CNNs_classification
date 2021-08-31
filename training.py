@@ -68,6 +68,6 @@ if __name__ == '__main__':
 
     print(f'Best Validation Accuracy: {best_valid_acc:4f}')
 
-    # checkpoint = {'state_dict': best_model_state_dict, 'optimizer': best_optimizer_state_dict}
+    checkpoint = {'state_dict': best_model_state_dict, 'optimizer': best_optimizer_state_dict}
 
     torch.save(obj=best_model_state_dict, f=args.weight_path)
