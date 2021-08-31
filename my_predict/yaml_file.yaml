@@ -3,9 +3,10 @@ cifar10:
   class: Predictor
   Predictor:
     model_config:
-      module: model.mobilenet_v2 
+      module: model.model 
       class: MobileNetV2
       MobileNetV2:
+        pretrained: True
         num_classes: 10
     weight_path: '''weights/best_model_accuracy=0.9552149681528662.pth'''
     image_size: '(224, 224)'
