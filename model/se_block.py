@@ -22,3 +22,6 @@ class SqueezeExcitation(nn.Module):
             SiLU(),  # in original using ReLU
             nn.Conv2d(in_channels=reduced_dim, out_channels=in_channels, kernel_size=1),  # C/r x 1 x 1 -> C x 1 x 1
             nn.Sigmoid())
+        
+    def forward(self, x):
+        return torch.mul(x, self.SEnet(x))
